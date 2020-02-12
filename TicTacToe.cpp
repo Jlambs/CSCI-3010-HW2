@@ -5,6 +5,7 @@
   Julian Lambert (Person 1)
 */
 
+#include <iostream>
 #include <vector>
 
 /**
@@ -33,9 +34,38 @@ std::vector<std::vector<char>> CreateBoard(int board_rows=3, int board_cols=3, c
 }
 
 
+/**
+  DisplayBoard prints a board with variable row/col sizes.
+
+  @param board The board object to be printed, represented as a vector of vectors of chars
+*/
+void DisplayBoard(std::vector<std::vector<char>> board) {
+
+  std::cout << '\n';
+
+  // Iteratively print elements to std::cout
+  for (int i = 0; i < board.size(); i++) {
+    for (int j = 0; j < board[i].size(); j++) {
+        // Add element [i][j] to our char vector
+        std::cout << board[i][j];
+    }
+    // Add a newline to the end of each row
+    std::cout << '\n';
+  }
+
+}
+
+
+
+
+
+
 int main() {
 
   // CreateBoard() has default arguments specified for all params
   std::vector<std::vector<char>> b = CreateBoard();
+
+  // Display our created board
+  DisplayBoard(b);
 
 }
