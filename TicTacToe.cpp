@@ -5,11 +5,11 @@
   Julian Lambert (Person 1)
 */
 
+#include <iostream>
 #include <vector>
 
 /**
   CreateBoard creates an empty board with variable row/col sizes.
-
   @param board_rows The number of rows the board will have.
   @param board_cols The number of cols the board will have.
   @param blank_char The char you want the board to be populated with.
@@ -33,9 +33,28 @@ std::vector<std::vector<char>> CreateBoard(int board_rows=3, int board_cols=3, c
 }
 
 
+/**
+  DisplayBoard prints out the TicTacToe board, from the top left cell to the bottom right cell
+  @param board The board (a 2-Dimensional array of char's)
+*/
+void DisplayBoard(std::vector<std::vector<char>> board) {
+  // Iteratre through the rows
+  for (int i = 0; i < board.size(); i++) {
+  // Iterate through the board's columns
+    for (int j = 0; j < board[i].size(); j++) {
+      // Print the value
+      std::cout << board[i][j];
+    }
+    // At the end of every row, start a new line for the next row
+    std::cout << "\n";
+  }
+}
+
+
 int main() {
 
   // CreateBoard() has default arguments specified for all params
   std::vector<std::vector<char>> b = CreateBoard();
+  DisplayBoard(b);
 
 }
