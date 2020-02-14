@@ -51,6 +51,33 @@ void DisplayBoard(std::vector<std::vector<char>> board) {
 }
 
 
+/**
+  GetPlayerChoice prompts the user for a location to play, then returns that choice.
+
+  @output a std::tuple<int, int> of their chosen coordinates.
+*/
+std::tuple<int, int> GetPlayerChoice() {
+
+  // Prompt user for their move's row
+  std::string row_choice;
+  // If wrong input format is given, re-prompt the user
+  while (row_choice != "1" && row_choice != "2" && row_choice != "3") {
+    std::cout << "Enter row (1-3): ";
+    std::cin >> row_choice;
+  }
+
+  // Prompt user for their move's col
+  std::string col_choice;
+  // If wrong input format is given, re-prompt the user
+  while (col_choice != "1" && col_choice != "2" && col_choice != "3") {
+    std::cout << "Enter col (1-3): ";
+    std::cin >> col_choice;
+  }
+
+  // Return the result as a tuple converted to integers
+  return std::tuple<int, int> {std::stoi(row_choice), std::stoi(col_choice)};
+}
+
 int main() {
 
   // CreateBoard() has default arguments specified for all params
@@ -59,5 +86,10 @@ int main() {
 
   // Display our created board
   DisplayBoard(b);
+
+  // Ask the user for a move
+  std::tuple<int, int> choice = GetPlayerChoice();
+
+  //std::cout << choice;
 
 }
