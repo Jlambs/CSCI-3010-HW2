@@ -32,10 +32,9 @@ std::vector<std::vector<char>> CreateBoard(int board_rows=3, int board_cols=3, c
   return board;
 }
 
-
 /**
   DisplayBoard prints out the TicTacToe board, from the top left cell to the bottom right cell
-  @param board The board (a 2-Dimensional array of char's)
+  @param board The board (a vector of vectors of chars)
 */
 void DisplayBoard(std::vector<std::vector<char>> board) {
   // Iteratre through the rows
@@ -55,7 +54,6 @@ void DisplayBoard(std::vector<std::vector<char>> board) {
   }
 }
 
-
 /**
   PlaceMarker prints out the TicTacToe board, from the top left cell to the bottom right cell
   @param board The board (a 2-Dimensional array of char's)
@@ -65,6 +63,33 @@ void DisplayBoard(std::vector<std::vector<char>> board) {
 */
 void PlaceMarker(std::vector<std::vector<char>> &board, int locationRow, int locationCol, char marker) {
   board[locationRow][locationCol] = marker;
+}
+
+/**
+  GetPlayerChoice prompts the user for a location to play, then returns that choice.
+
+  @output a std::tuple<int, int> of their chosen coordinates.
+*/
+std::tuple<int, int> GetPlayerChoice() {
+
+  // Prompt user for their move's row
+  std::string row_choice;
+  // If wrong input format is given, re-prompt the user
+  while (row_choice != "1" && row_choice != "2" && row_choice != "3") {
+    std::cout << "Enter row (1-3): ";
+    std::cin >> row_choice;
+  }
+
+  // Prompt user for their move's col
+  std::string col_choice;
+  // If wrong input format is given, re-prompt the user
+  while (col_choice != "1" && col_choice != "2" && col_choice != "3") {
+    std::cout << "Enter col (1-3): ";
+    std::cin >> col_choice;
+  }
+
+  // Return the result as a tuple converted to integers
+  return std::tuple<int, int> {std::stoi(row_choice), std::stoi(col_choice)};
 }
 
 int main() {
@@ -81,5 +106,13 @@ int main() {
  
   // DisplayBoard called again in order to display the newly placed marker on the board
   DisplayBoard(b);
+
+  // Display our created board
+  DisplayBoard(b);
+
+  // Ask the user for a move
+  std::tuple<int, int> choice = GetPlayerChoice();
+
+  //std::cout << choice;
 
 }
