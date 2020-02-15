@@ -32,24 +32,38 @@ std::vector<std::vector<char>> CreateBoard(int board_rows=3, int board_cols=3, c
   return board;
 }
 
-
 /**
   DisplayBoard prints out the TicTacToe board, from the top left cell to the bottom right cell
   @param board The board (a vector of vectors of chars)
 */
 void DisplayBoard(std::vector<std::vector<char>> board) {
   // Iteratre through the rows
-  for (int i = 0; i < board.size(); i++) {
+  for (unsigned int i = 0; i < board.size(); i++) {
   // Iterate through the board's columns
-    for (int j = 0; j < board[i].size(); j++) {
-      // Print the value
+    for (unsigned int j = 0; j < board[i].size(); j++) {
+      if (j > 0) {
+        std::cout << "   |";
+      }
       std::cout << board[i][j];
     }
     // At the end of every row, start a new line for the next row
     std::cout << "\n";
+    if(i < 2) {
+      std::cout << "______________\n";
+    }
   }
 }
 
+/**
+  PlaceMarker prints out the TicTacToe board, from the top left cell to the bottom right cell
+  @param board The board (a 2-Dimensional array of char's)
+  @param locationRow The row index value for the location to place the marker
+  @param locationCol The column index value for the location to place the marker 
+  @param marker The appropriate marker for the player to place (either x or o)
+*/
+void PlaceMarker(std::vector<std::vector<char>> &board, int locationRow, int locationCol, char marker) {
+  board[locationRow][locationCol] = marker;
+}
 
 /**
   GetPlayerChoice prompts the user for a location to play, then returns that choice.
@@ -81,7 +95,16 @@ std::tuple<int, int> GetPlayerChoice() {
 int main() {
 
   // CreateBoard() has default arguments specified for all params
-  std::vector<std::vector<char>> b = CreateBoard();
+  std::vector<std::vector<char>>  b = CreateBoard();
+  DisplayBoard(b);
+
+  // Line breaks for display visibility, can be delted later after further development.
+  std::cout << "\n\n\n";
+  
+  // PlaceMarker() called with the board b passed into it as well as other generic parameters
+  PlaceMarker(b, 1, 2, 'X');
+ 
+  // DisplayBoard called again in order to display the newly placed marker on the board
   DisplayBoard(b);
 
   // Display our created board
