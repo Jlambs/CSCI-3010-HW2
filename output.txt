@@ -1,0 +1,78 @@
+
+X's turn
+    |    | 
+______________
+    |    | 
+______________
+    |    | 
+
+Enter row (1-3): Enter col (1-3): 
+O's turn
+X   |    | 
+______________
+    |    | 
+______________
+    |    | 
+
+Enter row (1-3): Enter col (1-3): 
+X's turn
+X   |O   | 
+______________
+    |    | 
+______________
+    |    | 
+
+Enter row (1-3): Enter col (1-3): 
+O's turn
+X   |O   |X
+______________
+    |    | 
+______________
+    |    | 
+
+Enter row (1-3): Enter col (1-3): 
+X's turn
+X   |O   |X
+______________
+O   |    | 
+______________
+    |    | 
+
+Enter row (1-3): Enter col (1-3): 
+O's turn
+X   |O   |X
+______________
+O   |X   | 
+______________
+    |    | 
+
+Enter row (1-3): Enter col (1-3): 
+X's turn
+X   |O   |X
+______________
+O   |X   |O
+______________
+    |    | 
+
+Enter row (1-3): Enter col (1-3): 
+O's turn
+X   |O   |X
+______________
+O   |X   |O
+______________
+X   |    | 
+
+Enter row (1-3): Enter col (1-3): 
+X's turn
+X   |O   |X
+______________
+O   |X   |O
+______________
+X   |O   | 
+
+Enter row (1-3): Enter col (1-3): 
+X   |O   |X
+______________
+O   |X   |O
+______________
+X   |O   |X
