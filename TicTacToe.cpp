@@ -7,13 +7,14 @@
 
 #include <iostream>
 #include <vector>
+#include <tuple>
 
 /**
   CreateBoard creates an empty board with variable row/col sizes.
   @param board_rows The number of rows the board will have.
   @param board_cols The number of cols the board will have.
   @param blank_char The char you want the board to be populated with.
-  @output An empty vector (rows) of vectors (cols) of chars.
+  @return An empty vector (rows) of vectors (cols) of chars.
 */
 std::vector<std::vector<char>> CreateBoard(int board_rows=3, int board_cols=3, char blank_char=' ') {
   // Initialize board
@@ -67,8 +68,7 @@ void PlaceMarker(std::vector<std::vector<char>> &board, int locationRow, int loc
 
 /**
   GetPlayerChoice prompts the user for a location to play, then returns that choice.
-
-  @output a std::tuple<int, int> of their chosen coordinates.
+  @return a std::tuple<int, int> of their chosen coordinates.
 */
 std::tuple<int, int> GetPlayerChoice() {
 
@@ -96,23 +96,29 @@ int main() {
 
   // CreateBoard() has default arguments specified for all params
   std::vector<std::vector<char>>  b = CreateBoard();
+
+// loop to simulate the game, iterates 9 times as there cannot be more than 9 turns in a game of Tic-Tac-Toe
+  for (int i = 0; i < 9; i++) {
+    if (i % 2) {
+      // O goes second, the board is displayed, and player O is prompted for a choice, that choice is used to place O's marker on the board
+      std::cout << "\nO's turn\n";
+      DisplayBoard(b);
+      std::cout << "\n";
+      std::tuple<int, int> choice = GetPlayerChoice();
+      PlaceMarker(b, (std::get<0>(choice))-1, (std::get<1>(choice))-1, 'O');
+    }
+    else {
+      // X goes first, the board is displayed, and player X is prompted for a choice, that choice is used to place X's marker on the board
+      std::cout << "\nX's turn\n";
+      DisplayBoard(b);
+      std::cout << "\n";
+      std::tuple<int, int> choice = GetPlayerChoice();
+      PlaceMarker(b, (std::get<0>(choice))-1, (std::get<1>(choice))-1, 'X');
+    }
+  }
+
+  // final board is displayed after 9 turns are taken
+  std::cout << "\n";
   DisplayBoard(b);
-
-  // Line breaks for display visibility, can be delted later after further development.
-  std::cout << "\n\n\n";
-  
-  // PlaceMarker() called with the board b passed into it as well as other generic parameters
-  PlaceMarker(b, 1, 2, 'X');
- 
-  // DisplayBoard called again in order to display the newly placed marker on the board
-  DisplayBoard(b);
-
-  // Display our created board
-  DisplayBoard(b);
-
-  // Ask the user for a move
-  std::tuple<int, int> choice = GetPlayerChoice();
-
-  //std::cout << choice;
 
 }
